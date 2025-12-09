@@ -14,6 +14,9 @@ window.addEventListener('DOMContentLoaded', function() {
     setupKeyboardNavigation();
     setupTouchNavigation();
     preloadImages();
+    createFloatingHearts();
+    createSparkles();
+    createBubbles();
 });
 
 // ===== 初始化页面 =====
@@ -328,3 +331,109 @@ document.querySelectorAll('button').forEach(button => {
     button.addEventListener('click', playClickSound);
 });
 */
+
+// ═══════════════════════════════════════════════════════════
+// ===== 新增：CSS动态生成的浪漫动画元素 =====
+// ═══════════════════════════════════════════════════════════
+
+// ===== 创建飘落的爱心 =====
+function createFloatingHearts() {
+    const container = document.getElementById('animationContainer');
+    if (!container) return;
+    
+    setInterval(() => {
+        const heart = document.createElement('div');
+        heart.className = 'floating-heart';
+        heart.innerHTML = '❤';
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+        heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+        heart.style.opacity = Math.random() * 0.5 + 0.3;
+        
+        // 随机颜色
+        const colors = ['#FF6B9D', '#FFB6D9', '#FFC7E5', '#FF9EC7', '#E5A4CB'];
+        heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+        
+        container.appendChild(heart);
+        
+        // 动画结束后移除
+        setTimeout(() => {
+            heart.remove();
+        }, 7000);
+    }, 800);
+}
+
+// ===== 创建闪烁的星星 =====
+function createSparkles() {
+    const container = document.getElementById('animationContainer');
+    if (!container) return;
+    
+    // 创建初始星星
+    for (let i = 0; i < 30; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.style.left = Math.random() * 100 + '%';
+        sparkle.style.top = Math.random() * 100 + '%';
+        sparkle.style.animationDelay = Math.random() * 3 + 's';
+        sparkle.style.animationDuration = (Math.random() * 2 + 2) + 's';
+        
+        container.appendChild(sparkle);
+    }
+}
+
+// ===== 创建上升的气泡 =====
+function createBubbles() {
+    const container = document.getElementById('animationContainer');
+    if (!container) return;
+    
+    setInterval(() => {
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble';
+        bubble.style.left = Math.random() * 100 + '%';
+        bubble.style.width = (Math.random() * 40 + 20) + 'px';
+        bubble.style.height = bubble.style.width;
+        bubble.style.animationDuration = (Math.random() * 4 + 6) + 's';
+        
+        container.appendChild(bubble);
+        
+        // 动画结束后移除
+        setTimeout(() => {
+            bubble.remove();
+        }, 10000);
+    }, 1500);
+}
+
+// ===== 页面切换时的粒子特效 =====
+function createParticleEffect(x, y) {
+    const container = document.getElementById('animationContainer');
+    if (!container) return;
+    
+    for (let i = 0; i < 15; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = x + 'px';
+        particle.style.top = y + 'px';
+        
+        const angle = (Math.PI * 2 * i) / 15;
+        const velocity = Math.random() * 100 + 50;
+        const tx = Math.cos(angle) * velocity;
+        const ty = Math.sin(angle) * velocity;
+        
+        particle.style.setProperty('--tx', tx + 'px');
+        particle.style.setProperty('--ty', ty + 'px');
+        
+        container.appendChild(particle);
+        
+        setTimeout(() => {
+            particle.remove();
+        }, 1000);
+    }
+}
+
+// ===== 为按钮添加点击特效 =====
+document.addEventListener('click', function(e) {
+    if (e.target.tagName === 'BUTTON') {
+        createParticleEffect(e.clientX, e.clientY);
+    }
+});
+
