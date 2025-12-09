@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我们的爱情纪念册</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 浪漫背景动画容器 -->
+    <div class="animation-bg">
+        <!-- 🎨 装饰元素替换区：将您的动图放入images文件夹，重命名为对应文件名 -->
+        <img src="./images/heart.gif" class="float-decoration heart-decoration" alt="">
+        <img src="./images/star.gif" class="float-decoration star-decoration" alt="">
+        <img src="./images/petal.gif" class="float-decoration petal-decoration" alt="">
+    </div>
+
+    <!-- 📱 音乐控制按钮 -->
+    <button class="music-control" id="musicControl" onclick="toggleMusic()">
+        <span id="musicIcon">🔇</span>
+    </button>
+
+    <!-- 🎵 背景音乐 -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- 【音频替换区】 -->
+    <!-- 将您的背景音乐文件放入「audio」文件夹 -->
+    <!-- 重命名为：bg-music.mp3 -->
+    <!-- 支持格式：mp3、wav、ogg -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <audio id="bgMusic" loop>
+        <source src="./audio/bg-music.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- 首页（封面页） -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <div class="page active" id="page0">
+        <div class="cover-page">
+            <!-- 【照片替换区 - 封面】 -->
+            <!-- 将您的封面照片放入「images」文件夹 -->
+            <!-- 重命名为：cover.jpg -->
+            <img src="./images/cover.jpg" class="cover-bg" alt="封面照片">
+            <div class="cover-overlay">
+                <h1 class="cover-title">我们的故事</h1>
+                <p class="cover-subtitle">Our Love Story</p>
+                <button class="start-btn" onclick="startJourney()">点击开启回忆</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- 内页 1 - 照片在上方 -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <div class="page" id="page1">
+        <div class="content-wrapper layout-top">
+            <!-- 【照片替换区 - 第1页】放入images文件夹，命名为：photo1.jpg -->
+            <img src="./images/photo1.jpg" class="memory-photo fade-in" alt="回忆照片1">
+            
+            <!-- 【文本替换区 - 第1页】修改下方引号内的文字 -->
+            <div class="text-box">
+                <p class="love-text">"遇见你的那一刻，我的世界开始有了颜色。"</p>
+            </div>
+            
+            <button class="nav-btn next-btn" onclick="nextPage(1)">下一页 →</button>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- 内页 2 - 照片在下方 -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <div class="page" id="page2">
+        <div class="content-wrapper layout-bottom">
+            <!-- 【文本替换区 - 第2页】 -->
+            <div class="text-box">
+                <p class="love-text">"你的笑容是我每天最期待的风景。"</p>
+            </div>
+            
+            <!-- 【照片替换区 - 第2页】 -->
+            <img src="./images/photo2.jpg" class="memory-photo fade-in" alt="回忆照片2">
+            
+            <button class="nav-btn next-btn" onclick="nextPage(2)">下一页 →</button>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- 内页 3 - 照片在左侧 -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <div class="page" id="page3">
+        <div class="content-wrapper layout-left">
+            <!-- 【照片替换区 - 第3页】 -->
+            <img src="./images/photo3.jpg" class="memory-photo fade-in" alt="回忆照片3">
+            
+            <!-- 【文本替换区 - 第3页】 -->
+            <div class="text-box">
+                <p class="love-text">"牵着你的手，感觉拥有了整个世界。"</p>
+            </div>
+            
+            <button class="nav-btn next-btn" onclick="nextPage(3)">下一页 →</button>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- 内页 4 - 照片在上方 -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <div class="page" id="page4">
+        <div class="content-wrapper layout-top">
+            <!-- 【照片替换区 - 第4页】 -->
+            <img src="./images/photo4.jpg" class="memory-photo fade-in" alt="回忆照片4">
+            
+            <!-- 【文本替换区 - 第4页】 -->
+            <div class="text-box">
+                <p class="love-text">"每一次相拥，都是最温暖的归宿。"</p>
+            </div>
+            
+            <button class="nav-btn next-btn" onclick="nextPage(4)">下一页 →</button>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- 内页 5 - 照片在左侧 -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <div class="page" id="page5">
+        <div class="content-wrapper layout-left">
+            <!-- 【照片替换区 - 第5页】 -->
+            <img src="./images/photo5.jpg" class="memory-photo fade-in" alt="回忆照片5">
+            
+            <!-- 【文本替换区 - 第5页】 -->
+            <div class="text-box">
+                <p class="love-text">"你说的每一句话，我都想听一百遍。"</p>
+            </div>
+            
+            <button class="nav-btn next-btn" onclick="nextPage(5)">下一页 →</button>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- 内页 6 - 照片在下方 -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <div class="page" id="page6">
+        <div class="content-wrapper layout-bottom">
+            <!-- 【文本替换区 - 第6页】 -->
+            <div class="text-box">
+                <p class="love-text">"和你在一起的时光，总是过得特别快。"</p>
+            </div>
+            
+            <!-- 【照片替换区 - 第6页】 -->
+            <img src="./images/photo6.jpg" class="memory-photo fade-in" alt="回忆照片6">
+            
+            <button class="nav-btn next-btn" onclick="nextPage(6)">下一页 →</button>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- 内页 7 - 照片在上方 -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <div class="page" id="page7">
+        <div class="content-wrapper layout-top">
+            <!-- 【照片替换区 - 第7页】 -->
+            <img src="./images/photo7.jpg" class="memory-photo fade-in" alt="回忆照片7">
+            
+            <!-- 【文本替换区 - 第7页】 -->
+            <div class="text-box">
+                <p class="love-text">"想和你走过春夏秋冬，看遍人间风景。"</p>
+            </div>
+            
+            <button class="nav-btn next-btn" onclick="nextPage(7)">下一页 →</button>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- 内页 8 - 照片在左侧 -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <div class="page" id="page8">
+        <div class="content-wrapper layout-left">
+            <!-- 【照片替换区 - 第8页】 -->
+            <img src="./images/photo8.jpg" class="memory-photo fade-in" alt="回忆照片8">
+            
+            <!-- 【文本替换区 - 第8页】 -->
+            <div class="text-box">
+                <p class="love-text">"你是我心中永远的小确幸。"</p>
+            </div>
+            
+            <button class="nav-btn next-btn" onclick="nextPage(8)">下一页 →</button>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- 内页 9 - 照片在下方 -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <div class="page" id="page9">
+        <div class="content-wrapper layout-bottom">
+            <!-- 【文本替换区 - 第9页】 -->
+            <div class="text-box">
+                <p class="love-text">"余生很长，我想和你一起度过。"</p>
+            </div>
+            
+            <!-- 【照片替换区 - 第9页】 -->
+            <img src="./images/photo9.jpg" class="memory-photo fade-in" alt="回忆照片9">
+            
+            <button class="nav-btn next-btn" onclick="nextPage(9)">下一页 →</button>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- 内页 10 - 照片在上方 -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <div class="page" id="page10">
+        <div class="content-wrapper layout-top">
+            <!-- 【照片替换区 - 第10页】 -->
+            <img src="./images/photo10.jpg" class="memory-photo fade-in" alt="回忆照片10">
+            
+            <!-- 【文本替换区 - 第10页】 -->
+            <div class="text-box">
+                <p class="love-text">"感谢命运让我遇见了你。"</p>
+            </div>
+            
+            <button class="nav-btn next-btn" onclick="nextPage(10)">下一页 →</button>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- 内页 11 - 照片在左侧 -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <div class="page" id="page11">
+        <div class="content-wrapper layout-left">
+            <!-- 【照片替换区 - 第11页】 -->
+            <img src="./images/photo11.jpg" class="memory-photo fade-in" alt="回忆照片11">
+            
+            <!-- 【文本替换区 - 第11页】 -->
+            <div class="text-box">
+                <p class="love-text">"每一个明天，都想和你一起醒来。"</p>
+            </div>
+            
+            <button class="nav-btn next-btn" onclick="nextPage(11)">下一页 →</button>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- 内页 12 - 照片在下方 -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <div class="page" id="page12">
+        <div class="content-wrapper layout-bottom">
+            <!-- 【文本替换区 - 第12页】 -->
+            <div class="text-box">
+                <p class="love-text">"有你的日子，每天都是情人节。"</p>
+            </div>
+            
+            <!-- 【照片替换区 - 第12页】 -->
+            <img src="./images/photo12.jpg" class="memory-photo fade-in" alt="回忆照片12">
+            
+            <button class="nav-btn next-btn" onclick="nextPage(12)">下一页 →</button>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- 内页 13 - 照片在上方 -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <div class="page" id="page13">
+        <div class="content-wrapper layout-top">
+            <!-- 【照片替换区 - 第13页】 -->
+            <img src="./images/photo13.jpg" class="memory-photo fade-in" alt="回忆照片13">
+            
+            <!-- 【文本替换区 - 第13页】 -->
+            <div class="text-box">
+                <p class="love-text">"你是我的小幸运，我的小星星。"</p>
+            </div>
+            
+            <button class="nav-btn next-btn" onclick="nextPage(13)">下一页 →</button>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- 内页 14 - 照片在左侧 -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <div class="page" id="page14">
+        <div class="content-wrapper layout-left">
+            <!-- 【照片替换区 - 第14页】 -->
+            <img src="./images/photo14.jpg" class="memory-photo fade-in" alt="回忆照片14">
+            
+            <!-- 【文本替换区 - 第14页】 -->
+            <div class="text-box">
+                <p class="love-text">"最浪漫的事，就是和你一起慢慢变老。"</p>
+            </div>
+            
+            <button class="nav-btn next-btn" onclick="nextPage(14)">下一页 →</button>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- 内页 15（最后一页）- 照片在上方 -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <div class="page" id="page15">
+        <div class="content-wrapper layout-top">
+            <!-- 【照片替换区 - 第15页】 -->
+            <img src="./images/photo15.jpg" class="memory-photo fade-in" alt="回忆照片15">
+            
+            <!-- 【文本替换区 - 第15页】 -->
+            <div class="text-box">
+                <p class="love-text">"爱你，是我做过最对的决定。❤️"</p>
+            </div>
+            
+            <button class="nav-btn home-btn" onclick="goHome()">回到首页 🏠</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
